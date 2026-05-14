@@ -1,362 +1,121 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galeria – Deck Bar | Ilha da Gigóia</title>
-  <meta name="description" content="Galeria de fotos do Deck Bar na Ilha da Gigóia — ambiente, pratos, drinks e o lindo pôr do sol na lagoa da Barra da Tijuca.">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
-  <style>
-    .gal-hero {
-      height: 55vh; min-height: 350px;
-      background: url('images/deck7.jpg') center 30% / cover no-repeat;
-      position: relative; display: flex; align-items: flex-end;
-    }
-    .gal-hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,20,10,0.85) 0%, rgba(10,20,10,0.15) 70%);
-    }
-    .gal-hero-content {
-      position: relative; z-index: 1; padding: 0 5vw 4rem;
-    }
-    .gal-hero-content h1 {
-      font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900; color: var(--white);
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .gal-hero-content h1 em { color: var(--gold-light); font-style: italic; }
-
-    .gal-page { padding: 4rem 5vw 6rem; background: var(--cream); }
-
-    .filter-bar {
-      display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 3rem;
-    }
-    .filter-btn {
-      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.5rem 1.2rem; border: 1.5px solid rgba(61,32,16,0.2);
-      background: transparent; color: var(--wood-mid);
-      cursor: pointer; border-radius: 2px; transition: all 0.25s;
-    }
-    .filter-btn.active, .filter-btn:hover {
-      border-color: var(--teal); background: var(--teal); color: white;
-    }
-
-    .masonry-gallery {
-      columns: 3; column-gap: 0.6rem;
-    }
-    @media (max-width: 900px) { .masonry-gallery { columns: 2; } }
-    @media (max-width: 500px) { .masonry-gallery { columns: 1; } }
-
-    .masonry-item {
-      break-inside: avoid; margin-bottom: 0.6rem;
-      position: relative; cursor: pointer;
-      overflow: hidden; border-radius: 4px;
-      background: var(--sand);
-    }
-    .masonry-item img {
-      width: 100%; display: block;
-      transition: transform 0.5s; border-radius: 4px;
-    }
-    .masonry-item:hover img { transform: scale(1.04); }
-    .masonry-overlay {
-      position: absolute; inset: 0; border-radius: 4px;
-      background: rgba(9,79,78,0); display: flex;
-      flex-direction: column; align-items: flex-start; justify-content: flex-end;
-      padding: 1.2rem; transition: background 0.35s;
-    }
-    .masonry-item:hover .masonry-overlay { background: rgba(9,79,78,0.55); }
-    .masonry-caption {
-      font-family: var(--font-label); font-size: 0.65rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: white; opacity: 0; transform: translateY(8px);
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    .masonry-item:hover .masonry-caption { opacity: 1; transform: translateY(0); }
-    .masonry-zoom {
-      position: absolute; top: 1rem; right: 1rem;
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(255,255,255,0.9); color: var(--teal);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem;
-      opacity: 0; transform: scale(0.7);
-      transition: opacity 0.3s, transform 0.3s;
-    }
-    .masonry-item:hover .masonry-zoom { opacity: 1; transform: scale(1); }
-
-    /* Lightbox enhanced */
-    .lightbox {
-      position: fixed; inset: 0; z-index: 9999;
-      background: rgba(0,0,0,0.95);
-      display: none; align-items: center; justify-content: center;
-      flex-direction: column;
-    }
-    .lightbox.active { display: flex; }
-    .lb-img-wrap { position: relative; }
-    .lb-img-wrap img { max-width: 90vw; max-height: 82vh; object-fit: contain; display: block; }
-    .lb-caption {
-      font-family: var(--font-label); font-size: 0.65rem; font-weight: 600;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      color: rgba(255,255,255,0.5); margin-top: 1rem; text-align: center;
-    }
-    .lightbox-close {
-      position: absolute; top: 1.5rem; right: 2rem;
-      font-size: 2rem; color: white; cursor: pointer; background: none; border: none;
-    }
-    .lb-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,0.1); border: none; color: white;
-      font-size: 1.5rem; padding: 0.8rem 1rem; cursor: pointer;
-      transition: background 0.2s;
-    }
-    .lb-nav:hover { background: rgba(255,255,255,0.2); }
-    .lb-nav.prev { left: 1rem; }
-    .lb-nav.next { right: 1rem; }
-
-    .ig-cta {
-      text-align: center; margin-top: 4rem;
-      padding: 3rem; background: var(--teal-dark); border-radius: 8px;
-    }
-    .ig-cta h3 {
-      font-family: var(--font-display); font-size: 1.8rem; color: var(--cream);
-      margin-bottom: 0.5rem;
-    }
-    .ig-cta p { color: rgba(253,246,236,0.7); font-style: italic; margin-bottom: 1.5rem; }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Galeria — Deck Bar</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.ig-block{background:var(--green);padding:48px 40px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.ig-block h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;color:#fff;line-height:1.15}
+.ig-block h2 em{font-style:italic;color:rgba(255,255,255,.5)}
+.ig-block p{font-size:14px;line-height:1.78;color:rgba(255,255,255,.4);margin:10px 0 20px}
+.ig-handle{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.25);display:block;margin-bottom:14px}
+.ig-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:3px}
+.ig-thumb{aspect-ratio:1;overflow:hidden}
+.ig-thumb img{filter:saturate(.7);transition:filter .3s}
+.ig-thumb:hover img{filter:saturate(1)}
+@media(max-width:768px){.ig-block{grid-template-columns:1fr;padding:36px 20px;gap:28px}}
+</style>
 </head>
 <body>
 
-<div class="nav-mobile" id="navMobile">
-  <a href="index.html" onclick="closeMobile()">Início</a>
-  <a href="cardapio.html" onclick="closeMobile()">Cardápio</a>
-  <a href="galeria.html" onclick="closeMobile()">Galeria</a>
-  <a href="index.html#contato" onclick="closeMobile()">Reservas</a>
+<div class="drawer" id="drawer">
+  <button class="drawer-x" onclick="closeDrawer()">✕</button>
+  <a href="index.html" onclick="closeDrawer()">Início</a>
+  <a href="cardapio.html" onclick="closeDrawer()">Cardápio</a>
+  <a href="galeria.html" onclick="closeDrawer()">Galeria</a>
+  <a href="contato.html" onclick="closeDrawer()">Contato</a>
 </div>
 
-<nav id="navbar" class="scrolled">
-  <a href="index.html" class="nav-logo">
-    <img src="images/logo.jpg" alt="Deck Bar">
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Início</a></li>
-    <li><a href="cardapio.html">Cardápio</a></li>
-    <li><a href="galeria.html" class="active">Galeria</a></li>
-    <li><a href="index.html#contato" class="nav-cta">Reservar Mesa</a></li>
-  </ul>
-  <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
-</nav>
+<header>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Deck Bar"></a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="cardapio.html">Cardápio</a>
+    <a href="galeria.html" class="active">Galeria</a>
+    <a href="contato.html">Contato</a>
+    <a href="contato.html" class="nav-reserve">Reservar</a>
+  </nav>
+  <button class="ham" onclick="document.getElementById('drawer').classList.toggle('open')"><span></span><span></span><span></span></button>
+</header>
 
-<div class="gal-hero">
-  <div class="gal-hero-content">
-    <div class="hero-eyebrow" style="opacity:1">Um lugar para ver e sentir</div>
-    <h1>Nossa <em>Galeria</em></h1>
-  </div>
-</div>
-
-<div class="umbrellas-strip">
-  <div class="umbrellas-inner">
-    <span>📸</span><span>Momentos Inesquecíveis</span>
-    <span>🌅</span><span>Pôr do Sol</span>
-    <span>☂️</span><span>Guarda-Chuvas Coloridos</span>
-    <span>🍹</span><span>Drinks Tropicais</span>
-    <span>🦐</span><span>Gastronomia do Mar</span>
-    <span>🌊</span><span>Vista para a Lagoa</span>
-    <span>📸</span><span>Momentos Inesquecíveis</span>
-    <span>🌅</span><span>Pôr do Sol</span>
-    <span>☂️</span><span>Guarda-Chuvas Coloridos</span>
-    <span>🍹</span><span>Drinks Tropicais</span>
-    <span>🦐</span><span>Gastronomia do Mar</span>
-    <span>🌊</span><span>Vista para a Lagoa</span>
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('images/deck4.jpg')"></div>
+  <div class="page-hero-body">
+    <span class="label">Fotos & Momentos</span>
+    <h1>Galeria</h1>
   </div>
 </div>
 
-<div class="gal-page">
-  <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterGal(this,'all')">Tudo</button>
-    <button class="filter-btn" onclick="filterGal(this,'ambiente')">🌊 Ambiente</button>
-    <button class="filter-btn" onclick="filterGal(this,'comida')">🦐 Gastronomia</button>
-    <button class="filter-btn" onclick="filterGal(this,'drinks')">🍹 Drinks</button>
-    <button class="filter-btn" onclick="filterGal(this,'paisagem')">🌅 Paisagem</button>
-  </div>
+<!-- FILTER -->
+<div class="filter-bar">
+  <button class="filt on" onclick="applyFilter('all',this)">Tudo</button>
+  <button class="filt" onclick="applyFilter('ambiente',this)">Ambiente</button>
+  <button class="filt" onclick="applyFilter('gastronomia',this)">Gastronomia</button>
+  <button class="filt" onclick="applyFilter('drinks',this)">Drinks</button>
+  <button class="filt" onclick="applyFilter('paisagem',this)">Paisagem</button>
+</div>
 
-  <div class="masonry-gallery" id="gallery">
-    <div class="masonry-item" data-cat="paisagem" onclick="openLb(0)">
-      <img src="images/deck7.jpg" alt="Pôr do sol na lagoa da Gigóia">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Pôr do Sol na Lagoa</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="comida" onclick="openLb(1)">
-      <img src="images/deck2.jpg" alt="Pratos de frutos do mar">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Frutos do Mar</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="ambiente" onclick="openLb(2)">
-      <img src="images/deck4.jpg" alt="Deck com cortinas brancas e vista para a lagoa">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Deck à Beira da Lagoa</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="drinks" onclick="openLb(3)">
-      <img src="images/deck5.jpg" alt="Coquetel tropical colorido">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Deck Sunset</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="ambiente" onclick="openLb(4)">
-      <img src="images/deck1.jpg" alt="Fachada com guarda-chuvas coloridos">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Guarda-Chuvas Coloridos</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="drinks" onclick="openLb(5)">
-      <img src="images/deck6.jpg" alt="Piña Colada com abacaxi">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Piña Colada da Gigóia</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="comida" onclick="openLb(6)">
-      <img src="images/deck3.jpg" alt="Petisco bolinha frita">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Petisco da Casa</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="ambiente" onclick="openLb(7)">
-      <img src="images/deck8.jpg" alt="Vista do bar pelo canal">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Vista pelo Canal</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="ambiente" onclick="openLb(8)">
-      <img src="images/deck9.jpg" alt="Ambiente interno do restaurante">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Ambiente Interno</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-    <div class="masonry-item" data-cat="paisagem" onclick="openLb(9)">
-      <img src="images/frente_restaurante.png" alt="Fachada do Deck Bar vista do canal">
-      <div class="masonry-overlay">
-        <span class="masonry-caption">Fachada do Deck Bar</span>
-        <div class="masonry-zoom"><i class="ph ph-magnifying-glass-plus"></i></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ig-cta">
-    <h3>Mais no Instagram 📸</h3>
-    <p>Siga o Deck Bar para ver os melhores momentos da ilha em tempo real.</p>
-    <a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="btn-primary">
-      <i class="ph ph-instagram-logo"></i> @deckdailhadagigoia
-    </a>
+<!-- MASONRY -->
+<div style="background:var(--sand);padding:4px">
+  <div class="masonry" id="masonry">
+    <div class="mi" data-cat="paisagem" onclick="lb(0)"><img src="images/deck7.jpg" alt="Pôr do Sol"><div class="mi-over"><span class="mi-cap">Pôr do Sol</span></div></div>
+    <div class="mi" data-cat="ambiente" onclick="lb(1)"><img src="images/deck4.jpg" alt="Deck"><div class="mi-over"><span class="mi-cap">Deck à Beira da Lagoa</span></div></div>
+    <div class="mi" data-cat="gastronomia" onclick="lb(2)"><img src="images/deck2.jpg" alt="Frutos do Mar"><div class="mi-over"><span class="mi-cap">Frutos do Mar</span></div></div>
+    <div class="mi" data-cat="drinks" onclick="lb(3)"><img src="images/deck5.jpg" alt="Coquetel"><div class="mi-over"><span class="mi-cap">Deck Sunset</span></div></div>
+    <div class="mi" data-cat="ambiente" onclick="lb(4)"><img src="images/deck1.jpg" alt="Decoração"><div class="mi-over"><span class="mi-cap">Decoração</span></div></div>
+    <div class="mi" data-cat="drinks" onclick="lb(5)"><img src="images/deck6.jpg" alt="Piña Colada"><div class="mi-over"><span class="mi-cap">Piña Colada</span></div></div>
+    <div class="mi" data-cat="gastronomia" onclick="lb(6)"><img src="images/deck3.jpg" alt="Petisco"><div class="mi-over"><span class="mi-cap">Petisco da Casa</span></div></div>
+    <div class="mi" data-cat="paisagem" onclick="lb(7)"><img src="images/frente_restaurante.png" alt="Fachada"><div class="mi-over"><span class="mi-cap">Vista do Canal</span></div></div>
+    <div class="mi" data-cat="ambiente" onclick="lb(8)"><img src="images/deck8.jpg" alt="Vista"><div class="mi-over"><span class="mi-cap">Vista da Água</span></div></div>
+    <div class="mi" data-cat="ambiente" onclick="lb(9)"><img src="images/deck9.jpg" alt="Interior"><div class="mi-over"><span class="mi-cap">Interior</span></div></div>
   </div>
 </div>
 
-<!-- FOOTER -->
+<!-- IG -->
+<div class="ig-block">
+  <div>
+    <span class="ig-handle">@deckdailhadagigoia</span>
+    <h2>Siga o Deck Bar<br>no <em>Instagram</em></h2>
+    <p>Mais fotos, stories e os melhores momentos da ilha publicados todos os dias.</p>
+    <a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="btn btn-terra">Seguir no Instagram</a>
+  </div>
+  <div class="ig-thumbs">
+    <div class="ig-thumb"><img src="images/deck5.jpg" alt=""></div>
+    <div class="ig-thumb"><img src="images/deck6.jpg" alt=""></div>
+    <div class="ig-thumb"><img src="images/deck7.jpg" alt=""></div>
+    <div class="ig-thumb"><img src="images/deck4.jpg" alt=""></div>
+    <div class="ig-thumb"><img src="images/deck2.jpg" alt=""></div>
+    <div class="ig-thumb"><img src="images/deck9.jpg" alt=""></div>
+  </div>
+</div>
+
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="images/logo.jpg" alt="Deck Bar">
-      <p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p>
-    </div>
-    <div class="footer-links">
-      <h4>Navegação</h4>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="cardapio.html">Cardápio</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="index.html#contato">Reservas</a></li>
-      </ul>
-    </div>
-    <div class="footer-social">
-      <h4>Siga-nos</h4>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="social-icon"><i class="ph ph-instagram-logo"></i></a>
-        <a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="social-icon"><i class="ph ph-facebook-logo"></i></a>
-        <a href="https://wa.me/5521999999999" target="_blank" class="social-icon"><i class="ph ph-whatsapp-logo"></i></a>
-      </div>
-    </div>
+  <div class="foot-grid">
+    <div class="foot-brand"><img src="images/logo.png" alt="Deck Bar"><p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p></div>
+    <div class="foot-col"><h6>Páginas</h6><ul><li><a href="index.html">Início</a></li><li><a href="cardapio.html">Cardápio</a></li><li><a href="galeria.html">Galeria</a></li><li><a href="contato.html">Contato</a></li></ul></div>
+    <div class="foot-col"><h6>Informações</h6><ul><li><a>Ilha da Gigóia — RJ</a></li><li><a href="https://wa.me/5521999999999">(21) 99999-9999</a></li><li><a>Seg–Sex 11h–23h</a></li><li><a>Sáb–Dom 10h–00h</a></li></ul></div>
+    <div class="foot-col"><h6>Redes</h6><div class="socs"><a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="soc">IG</a><a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="soc">FB</a><a href="https://wa.me/5521999999999" target="_blank" class="soc">WA</a></div></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Deck Bar – Ilha da Gigóia. Todos os direitos reservados.</p>
-  </div>
+  <div class="foot-bot"><p>© 2025 Deck Bar — Ilha da Gigóia.</p><p>Rio de Janeiro, Brasil</p></div>
 </footer>
 
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox">
-  <button class="lightbox-close" onclick="closeLb()">✕</button>
-  <button class="lb-nav prev" onclick="navLb(-1)">‹</button>
-  <div class="lb-img-wrap">
-    <img id="lbImg" src="" alt="">
-  </div>
-  <p class="lb-caption" id="lbCaption"></p>
-  <button class="lb-nav next" onclick="navLb(1)">›</button>
-</div>
+<div id="lb"><button class="lb-x" onclick="closeLb()">✕</button><button class="lb-a l" onclick="navLb(-1)">‹</button><img id="lb-img" src="" alt=""><button class="lb-a r" onclick="navLb(1)">›</button></div>
 
 <script>
-  document.getElementById('navbar').classList.add('scrolled');
-  function toggleMobile() { document.getElementById('navMobile').classList.toggle('open'); }
-  function closeMobile() { document.getElementById('navMobile').classList.remove('open'); }
-
-  // Gallery data
-  const images = [
-    { src: 'images/deck7.jpg', caption: 'Pôr do Sol na Lagoa' },
-    { src: 'images/deck2.jpg', caption: 'Frutos do Mar' },
-    { src: 'images/deck4.jpg', caption: 'Deck à Beira da Lagoa' },
-    { src: 'images/deck5.jpg', caption: 'Deck Sunset' },
-    { src: 'images/deck1.jpg', caption: 'Guarda-Chuvas Coloridos' },
-    { src: 'images/deck6.jpg', caption: 'Piña Colada da Gigóia' },
-    { src: 'images/deck3.jpg', caption: 'Petisco da Casa' },
-    { src: 'images/deck8.jpg', caption: 'Vista pelo Canal' },
-    { src: 'images/deck9.jpg', caption: 'Ambiente Interno' },
-    { src: 'images/frente_restaurante.png', caption: 'Fachada do Deck Bar' },
-  ];
-  let current = 0;
-
-  function openLb(i) {
-    current = i;
-    document.getElementById('lbImg').src = images[i].src;
-    document.getElementById('lbCaption').textContent = images[i].caption;
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLb() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  function navLb(dir) {
-    current = (current + dir + images.length) % images.length;
-    document.getElementById('lbImg').src = images[current].src;
-    document.getElementById('lbCaption').textContent = images[current].caption;
-  }
-  document.getElementById('lightbox').addEventListener('click', function(e) {
-    if (e.target === this) closeLb();
-  });
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLb();
-    if (e.key === 'ArrowRight') navLb(1);
-    if (e.key === 'ArrowLeft') navLb(-1);
-  });
-
-  // Filter
-  function filterGal(btn, cat) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.masonry-item').forEach(item => {
-      const show = cat === 'all' || item.dataset.cat === cat;
-      item.style.display = show ? 'block' : 'none';
-    });
-  }
+const src=['images/deck7.jpg','images/deck4.jpg','images/deck2.jpg','images/deck5.jpg','images/deck1.jpg','images/deck6.jpg','images/deck3.jpg','images/frente_restaurante.png','images/deck8.jpg','images/deck9.jpg'];
+let cur=0;
+function lb(i){cur=i;document.getElementById('lb-img').src=src[i];document.getElementById('lb').classList.add('open');document.body.style.overflow='hidden'}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+function navLb(d){cur=(cur+d+src.length)%src.length;document.getElementById('lb-img').src=src[cur]}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===document.getElementById('lb'))closeLb()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLb();if(e.key==='ArrowRight')navLb(1);if(e.key==='ArrowLeft')navLb(-1)});
+function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
+function applyFilter(cat,btn){
+  document.querySelectorAll('.filt').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.mi').forEach(m=>{m.style.display=(cat==='all'||m.dataset.cat===cat)?'block':'none'});
+}
 </script>
 </body>
 </html>

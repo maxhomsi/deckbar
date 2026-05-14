@@ -1,510 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cardápio – Deck Bar | Ilha da Gigóia</title>
-  <meta name="description" content="Conheça o cardápio do Deck Bar na Ilha da Gigóia: frutos do mar frescos, petiscos, sobremesas e drinks tropicais.">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
-  <style>
-    .menu-hero {
-      height: 55vh; min-height: 380px;
-      background: url('images/deck2.jpg') center 40% / cover no-repeat;
-      position: relative; display: flex; align-items: flex-end;
-    }
-    .menu-hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,25,10,0.88) 0%, rgba(10,25,10,0.2) 60%);
-    }
-    .menu-hero-content {
-      position: relative; z-index: 1; padding: 0 5vw 4rem;
-    }
-    .menu-hero-content h1 {
-      font-family: var(--font-display); font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 900; color: var(--white);
-      text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-    }
-    .menu-hero-content h1 em { color: var(--gold-light); font-style: italic; }
-    .menu-hero-content p {
-      font-family: var(--font-body); font-size: 1.1rem; font-style: italic;
-      color: rgba(255,253,248,0.8); margin-top: 0.5rem;
-    }
-
-    .cardapio-page { padding: 5rem 5vw; background: var(--cream); }
-
-    .cat-nav {
-      display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 4rem;
-      position: sticky; top: 70px; background: var(--cream);
-      padding: 1rem 0; z-index: 10;
-      border-bottom: 1px solid rgba(61,32,16,0.1);
-    }
-    .cat-btn {
-      font-family: var(--font-label); font-size: 0.7rem; font-weight: 700;
-      letter-spacing: 0.15em; text-transform: uppercase;
-      padding: 0.55rem 1.2rem; border: 1.5px solid var(--teal);
-      background: transparent; color: var(--teal);
-      cursor: pointer; border-radius: 2px;
-      transition: all 0.25s;
-    }
-    .cat-btn.active, .cat-btn:hover { background: var(--teal); color: white; }
-
-    .menu-category { margin-bottom: 5rem; }
-    .menu-category h2 {
-      font-family: var(--font-display); font-size: 2.2rem; font-weight: 700;
-      color: var(--wood); margin-bottom: 0.3rem;
-    }
-    .menu-category h2 em { color: var(--teal); font-style: italic; }
-    .menu-category .cat-desc {
-      font-style: italic; color: var(--wood-mid); margin-bottom: 2rem;
-      font-size: 1rem; padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(61,32,16,0.12);
-    }
-    .menu-card-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .menu-card {
-      background: var(--white); border-radius: 6px;
-      overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,0.06);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .menu-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
-    .menu-card-img { height: 180px; overflow: hidden; }
-    .menu-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
-    .menu-card:hover .menu-card-img img { transform: scale(1.05); }
-    .menu-card-body { padding: 1.3rem; }
-    .menu-card-body .tag-badge {
-      display: inline-block; font-family: var(--font-label);
-      font-size: 0.56rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;
-      background: var(--gold-light); color: var(--wood);
-      padding: 0.2rem 0.6rem; border-radius: 2px; margin-bottom: 0.5rem;
-    }
-    .menu-card-body h3 {
-      font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
-      color: var(--wood); margin-bottom: 0.4rem;
-    }
-    .menu-card-body p { font-size: 0.9rem; color: var(--wood-mid); line-height: 1.55; }
-    .menu-card-footer {
-      padding: 0.8rem 1.3rem 1rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-top: 1px solid rgba(61,32,16,0.06);
-    }
-    .menu-card-footer .price {
-      font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: var(--teal);
-    }
-    .menu-card-footer .serves {
-      font-family: var(--font-label); font-size: 0.6rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--wood-mid);
-    }
-    .no-img { background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
-      display: flex; align-items: center; justify-content: center; font-size: 3rem; }
-
-    .disclaimer {
-      text-align: center; margin-top: 3rem;
-      font-style: italic; color: var(--wood-mid); font-size: 0.9rem;
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cardápio — Deck Bar</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="nav-mobile" id="navMobile">
-  <a href="index.html" onclick="closeMobile()">Início</a>
-  <a href="cardapio.html" onclick="closeMobile()">Cardápio</a>
-  <a href="galeria.html" onclick="closeMobile()">Galeria</a>
-  <a href="index.html#contato" onclick="closeMobile()">Reservas</a>
+<div class="drawer" id="drawer">
+  <button class="drawer-x" onclick="closeDrawer()">✕</button>
+  <a href="index.html" onclick="closeDrawer()">Início</a>
+  <a href="cardapio.html" onclick="closeDrawer()">Cardápio</a>
+  <a href="galeria.html" onclick="closeDrawer()">Galeria</a>
+  <a href="contato.html" onclick="closeDrawer()">Contato</a>
 </div>
 
-<nav id="navbar" class="scrolled">
-  <a href="index.html" class="nav-logo">
-    <img src="images/logo.jpg" alt="Deck Bar">
-  </a>
-  <ul class="nav-links">
-    <li><a href="index.html">Início</a></li>
-    <li><a href="cardapio.html" class="active">Cardápio</a></li>
-    <li><a href="galeria.html">Galeria</a></li>
-    <li><a href="index.html#contato" class="nav-cta">Reservar Mesa</a></li>
-  </ul>
-  <button class="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
-</nav>
-
-<div class="menu-hero">
-  <div class="menu-hero-content">
-    <div class="hero-eyebrow" style="opacity:1">Nossa Cozinha</div>
-    <h1>O <em>Cardápio</em><br>do Deck Bar</h1>
-    <p>Frutos do mar frescos, tempero carioca e muito amor.</p>
-  </div>
-</div>
-
-<div class="umbrellas-strip">
-  <div class="umbrellas-inner">
-    <span>🦐</span><span>Camarão Fresco</span>
-    <span>🐙</span><span>Polvo Grelhado</span>
-    <span>🐟</span><span>Peixe do Dia</span>
-    <span>🦑</span><span>Lula à Dorê</span>
-    <span>🍍</span><span>Camarão no Abacaxi</span>
-    <span>🍺</span><span>Chopp Gelado</span>
-    <span>🍹</span><span>Coquetéis Artesanais</span>
-    <span>🦐</span><span>Camarão Fresco</span>
-    <span>🐙</span><span>Polvo Grelhado</span>
-    <span>🐟</span><span>Peixe do Dia</span>
-    <span>🦑</span><span>Lula à Dorê</span>
-    <span>🍍</span><span>Camarão no Abacaxi</span>
-    <span>🍺</span><span>Chopp Gelado</span>
-    <span>🍹</span><span>Coquetéis Artesanais</span>
-  </div>
-</div>
-
-<div class="cardapio-page">
-  <nav class="cat-nav">
-    <button class="cat-btn active" onclick="scrollTo('entradas')">🥗 Entradas</button>
-    <button class="cat-btn" onclick="scrollTo('frutos')">🦐 Frutos do Mar</button>
-    <button class="cat-btn" onclick="scrollTo('peixes')">🐟 Peixes</button>
-    <button class="cat-btn" onclick="scrollTo('petiscos')">🍢 Petiscos</button>
-    <button class="cat-btn" onclick="scrollTo('sobremesas')">🍮 Sobremesas</button>
-    <button class="cat-btn" onclick="scrollTo('drinks')">🍹 Drinks & Bebidas</button>
+<header>
+  <a href="index.html" class="logo"><img src="images/logo.png" alt="Deck Bar"></a>
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="cardapio.html" class="active">Cardápio</a>
+    <a href="galeria.html">Galeria</a>
+    <a href="contato.html">Contato</a>
+    <a href="contato.html" class="nav-reserve">Reservar</a>
   </nav>
+  <button class="ham" onclick="document.getElementById('drawer').classList.toggle('open')"><span></span><span></span><span></span></button>
+</header>
 
-  <!-- ENTRADAS -->
-  <div class="menu-category" id="entradas">
-    <h2>Entradas & <em>Petiscos</em></h2>
-    <p class="cat-desc">Para começar bem, do jeito carioca.</p>
-    <div class="menu-card-grid">
-      <div class="menu-card reveal">
-        <div class="menu-card-img">
-          <img src="images/deck3.jpg" alt="Bolinho frito">
-        </div>
-        <div class="menu-card-body">
-          <span class="tag-badge">⭐ Favorito</span>
-          <h3>Bolinho da Casa</h3>
-          <p>Crocante por fora, recheado de sabor por dentro. Servido com molho especial da casa e limão.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 38</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🦀</div>
-        <div class="menu-card-body">
-          <h3>Casquinha de Siri</h3>
-          <p>Gratinada com catupiry e farofa de manteiga. Clássico do litoral carioca.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 42</span>
-          <span class="serves">2 unid.</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🐟</div>
-        <div class="menu-card-body">
-          <h3>Isca de Peixe Frito</h3>
-          <p>Peixe fresco cortado em tiras, empanado e frito. Com vinagrete da casa e farinha de mandioca.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 36</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🐚</div>
-        <div class="menu-card-body">
-          <h3>Marisco na Moranga</h3>
-          <p>Mariscos salteados no alho e azeite, servidos dentro de moranga assada com creme.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 55</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-    </div>
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('images/deck2.jpg')"></div>
+  <div class="page-hero-body">
+    <span class="label">Nossa cozinha</span>
+    <h1>Cardápio</h1>
   </div>
-
-  <!-- FRUTOS DO MAR -->
-  <div class="menu-category" id="frutos">
-    <h2>Frutos do <em>Mar</em></h2>
-    <p class="cat-desc">Do mar para a sua mesa — sempre frescos e com tempero de quem entende.</p>
-    <div class="menu-card-grid">
-      <div class="menu-card reveal">
-        <div class="menu-card-img">
-          <img src="images/deck2.jpg" alt="Camarão no Abacaxi">
-        </div>
-        <div class="menu-card-body">
-          <span class="tag-badge">🍍 Assinatura</span>
-          <h3>Camarão no Abacaxi</h3>
-          <p>Camarão salteado com creme de coco e especiarias, servido dentro do abacaxi. Nosso prato mais pedido!</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 98</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🦑</div>
-        <div class="menu-card-body">
-          <h3>Lula à Dorê</h3>
-          <p>Lula fresca empanada, dourada em óleo. Com molho tártaro artesanal e salada verde.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 68</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🐙</div>
-        <div class="menu-card-body">
-          <span class="tag-badge">🔥 Destaque</span>
-          <h3>Polvo à Lagareiro</h3>
-          <p>Polvo cozido e grelhado com azeite português, batatas e chimichurri. Uma experiência mediterrânea no Rio.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 110</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🦐</div>
-        <div class="menu-card-body">
-          <h3>Camarão na Moranga</h3>
-          <p>Camarão ao creme de catupiry dentro de moranga assada. Conforto e sabor em cada colherada.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 95</span>
-          <span class="serves">Serve 2–3</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🫕</div>
-        <div class="menu-card-body">
-          <h3>Caldeirada de Frutos do Mar</h3>
-          <p>Camarão, lula, polvo e peixe num caldo encorpado e aromático. Acompanha arroz e farofa.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 120</span>
-          <span class="serves">Serve 2–3</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🍚</div>
-        <div class="menu-card-body">
-          <h3>Arroz de Lula</h3>
-          <p>Lula fresca com arroz cremoso, ervas frescas e azeite de qualidade. Simples e memorável.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 72</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PEIXES -->
-  <div class="menu-category" id="peixes">
-    <h2>Pratos de <em>Peixe</em></h2>
-    <p class="cat-desc">Da moqueca tradicional ao filé grelhado, os sabores do litoral carioca.</p>
-    <div class="menu-card-grid">
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🫕</div>
-        <div class="menu-card-body">
-          <span class="tag-badge">🏆 Festival</span>
-          <h3>Moqueca de Peixe</h3>
-          <p>Filé de peixe fresco ao molho de leite de coco, dendê e legumes. Acompanha arroz, pirão e farofa.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 85</span>
-          <span class="serves">Serve 2</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🐟</div>
-        <div class="menu-card-body">
-          <h3>Salmão Grelhado</h3>
-          <p>Com purê de batata-doce e farofa de ervas frescas. Uma opção mais leve e sofisticada.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">R$ 89</span>
-          <span class="serves">Individual</span>
-        </div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🔥</div>
-        <div class="menu-card-body">
-          <h3>Peixe na Brasa</h3>
-          <p>Peixe inteiro assado na brasa com ervas, limão e azeite. Pergunte o peixe do dia ao garçom.</p>
-        </div>
-        <div class="menu-card-footer">
-          <span class="price">Consulte</span>
-          <span class="serves">Serve 2–3</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SOBREMESAS -->
-  <div class="menu-category" id="sobremesas">
-    <h2><em>Sobremesas</em></h2>
-    <p class="cat-desc">O final perfeito para uma refeição inesquecível.</p>
-    <div class="menu-card-grid">
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🍮</div>
-        <div class="menu-card-body">
-          <h3>Pudim da Casa</h3>
-          <p>Pudim de leite condensado feito na hora, com calda de caramelo e coco ralado.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 22</span><span class="serves">Individual</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🍍</div>
-        <div class="menu-card-body">
-          <h3>Abacaxi Flambado</h3>
-          <p>Rodelas de abacaxi caramelizadas com açúcar mascavo, canela e cachaça. Servido com sorvete.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 28</span><span class="serves">Serve 2</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🥥</div>
-        <div class="menu-card-body">
-          <h3>Mousse de Coco</h3>
-          <p>Mousse aerada de leite de coco com raspas de limão e granola crocante por cima.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 24</span><span class="serves">Individual</span></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DRINKS -->
-  <div class="menu-category" id="drinks">
-    <h2>Drinks & <em>Bebidas</em></h2>
-    <p class="cat-desc">Coquetéis tropicais, cervejas geladas e muito mais para refrescar.</p>
-    <div class="menu-card-grid">
-      <div class="menu-card reveal">
-        <div class="menu-card-img">
-          <img src="images/deck5.jpg" alt="Deck Sunset">
-        </div>
-        <div class="menu-card-body">
-          <span class="tag-badge">⭐ Assinatura</span>
-          <h3>Deck Sunset 🌅</h3>
-          <p>Vodka, maracujá, morango e manga. Três camadas de cores que imitam o pôr do sol na lagoa.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 36</span><span class="serves">340ml</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img">
-          <img src="images/deck6.jpg" alt="Piña Colada">
-        </div>
-        <div class="menu-card-body">
-          <span class="tag-badge">🍍 Tropical</span>
-          <h3>Piña Colada da Gigóia</h3>
-          <p>Rum branco, creme de coco, abacaxi fresco e fio de caramelo. O drink da ilha.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 32</span><span class="serves">340ml</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🍋</div>
-        <div class="menu-card-body">
-          <h3>Caipirinha Clássica</h3>
-          <p>Cachaça premium, limão-taiti, açúcar e gelo. Do jeito que o carioca gosta.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 28</span><span class="serves">300ml</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🌿</div>
-        <div class="menu-card-body">
-          <h3>Água de Coco Sour</h3>
-          <p>Gin, água de coco natural, limão siciliano e hortelã fresca. Leveza total.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 38</span><span class="serves">300ml</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🍺</div>
-        <div class="menu-card-body">
-          <h3>Chopp Gelado</h3>
-          <p>Chopp artesanal tirado na hora, com colarinho perfeito. A pedida clássica do bar.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 16</span><span class="serves">500ml</span></div>
-      </div>
-      <div class="menu-card reveal">
-        <div class="menu-card-img no-img">🥤</div>
-        <div class="menu-card-body">
-          <h3>Sucos Tropicais</h3>
-          <p>Açaí, caju, cajá, graviola, pitanga. Frutas do nordeste e do Rio, bem geladas.</p>
-        </div>
-        <div class="menu-card-footer"><span class="price">R$ 18</span><span class="serves">400ml</span></div>
-      </div>
-    </div>
-  </div>
-
-  <p class="disclaimer">
-    * Cardápio e preços sujeitos a alteração sem aviso prévio. Alguns pratos podem conter alérgenos.<br>
-    Consulte o garçom sobre ingredientes e disponibilidade.
-  </p>
 </div>
 
-<!-- CTA CONTATO -->
-<section id="contato" style="background: var(--teal-dark); padding: 5rem 5vw; text-align:center">
-  <p class="section-label" style="justify-content:center; color:var(--gold)">
-    <span style="width:28px;height:1.5px;background:var(--gold);display:inline-block;margin-right:0.8rem"></span>
-    Reservas
-  </p>
-  <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);color:var(--cream);margin-bottom:1rem">
-    Pronto para <em style="color:var(--gold);font-style:italic">saborear</em> a experiência?
-  </h2>
-  <p style="color:rgba(253,246,236,0.7);max-width:500px;margin:0 auto 2rem;font-size:1.05rem;font-style:italic">
-    Reserve sua mesa e garanta um lugar à beira da lagoa.
-  </p>
-  <a href="index.html#contato" class="btn-primary">
-    <i class="ph ph-calendar-check"></i> Reservar Agora
-  </a>
-</section>
+<div class="menu-layout">
+  <!-- SIDEBAR -->
+  <aside class="menu-sidebar">
+    <p>Categorias</p>
+    <div class="menu-nav">
+      <button class="mnav-btn on" onclick="jump('entradas',this)">Entradas <span class="mnav-dot"></span></button>
+      <button class="mnav-btn" onclick="jump('frutos',this)">Frutos do Mar <span class="mnav-dot"></span></button>
+      <button class="mnav-btn" onclick="jump('peixes',this)">Peixes <span class="mnav-dot"></span></button>
+      <button class="mnav-btn" onclick="jump('sobremesas',this)">Sobremesas <span class="mnav-dot"></span></button>
+      <button class="mnav-btn" onclick="jump('drinks',this)">Drinks <span class="mnav-dot"></span></button>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="menu-content">
+
+    <div class="mcat" id="entradas">
+      <div class="mcat-head"><h2>Entradas & <em>Petiscos</em></h2><span>Para começar</span></div>
+      <div class="dishes">
+        <div class="dish"><div class="dish-l"><h4>Bolinho da Casa <span class="badge">favorito</span></h4><p>Crocante por fora, cremoso por dentro. Com molho especial e limão-taiti.</p></div><span class="dish-price">R$ 38</span></div>
+        <div class="dish"><div class="dish-l"><h4>Casquinha de Siri</h4><p>Gratinada com catupiry e farofa de manteiga.</p></div><span class="dish-price">R$ 42</span></div>
+        <div class="dish"><div class="dish-l"><h4>Isca de Peixe</h4><p>Frito, com vinagrete da casa e farinha de mandioca.</p></div><span class="dish-price">R$ 36</span></div>
+        <div class="dish"><div class="dish-l"><h4>Marisco no Azeite</h4><p>Salteado com alho, azeite extra virgem e coentro. Com pão da casa.</p></div><span class="dish-price">R$ 48</span></div>
+        <div class="dish"><div class="dish-l"><h4>Tábua do Deck</h4><p>Seleção de petiscos da casa para compartilhar.</p></div><span class="dish-price">R$ 85</span></div>
+      </div>
+    </div>
+
+    <div class="mcat" id="frutos">
+      <div class="mcat-head"><h2>Frutos do <em>Mar</em></h2><span>Sempre frescos</span></div>
+      <div class="dishes">
+        <div class="dish"><div class="dish-l"><h4>Camarão no Abacaxi <span class="badge">assinatura</span></h4><p>Salteado com creme de coco, servido dentro do abacaxi. O mais pedido da casa.</p></div><span class="dish-price">R$ 98</span></div>
+        <div class="dish"><div class="dish-l"><h4>Camarão na Moranga</h4><p>Ao creme de catupiry dentro de moranga assada.</p></div><span class="dish-price">R$ 95</span></div>
+        <div class="dish"><div class="dish-l"><h4>Lula à Dorê</h4><p>Fresca, empanada, com molho tártaro artesanal.</p></div><span class="dish-price">R$ 68</span></div>
+        <div class="dish"><div class="dish-l"><h4>Polvo à Lagareiro <span class="badge g">especial</span></h4><p>Grelhado com batatas rústicas, azeite e chimichurri.</p></div><span class="dish-price">R$ 110</span></div>
+        <div class="dish"><div class="dish-l"><h4>Caldeirada de Frutos do Mar</h4><p>Camarão, lula, polvo e peixe no caldo da casa. Com arroz e farofa.</p></div><span class="dish-price">R$ 120</span></div>
+        <div class="dish"><div class="dish-l"><h4>Arroz de Lula</h4><p>Lula fresca, arroz cremoso, ervas e azeite extra virgem.</p></div><span class="dish-price">R$ 72</span></div>
+      </div>
+    </div>
+
+    <div class="mcat" id="peixes">
+      <div class="mcat-head"><h2>Pratos de <em>Peixe</em></h2><span>Do litoral ao prato</span></div>
+      <div class="dishes">
+        <div class="dish"><div class="dish-l"><h4>Moqueca de Peixe <span class="badge">festival</span></h4><p>Filé fresco ao leite de coco e dendê. Com arroz, pirão e farofa.</p></div><span class="dish-price">R$ 85</span></div>
+        <div class="dish"><div class="dish-l"><h4>Salmão Grelhado</h4><p>Com purê de batata-doce e farofa de ervas frescas.</p></div><span class="dish-price">R$ 89</span></div>
+        <div class="dish"><div class="dish-l"><h4>Peixe na Brasa</h4><p>Inteiro, na brasa, com ervas e limão. Consulte o peixe do dia.</p></div><span class="dish-price">Consulte</span></div>
+      </div>
+    </div>
+
+    <div class="mcat" id="sobremesas">
+      <div class="mcat-head"><h2><em>Sobremesas</em></h2><span>O final perfeito</span></div>
+      <div class="dishes">
+        <div class="dish"><div class="dish-l"><h4>Pudim da Casa</h4><p>Leite condensado, calda de caramelo e coco ralado.</p></div><span class="dish-price">R$ 22</span></div>
+        <div class="dish"><div class="dish-l"><h4>Abacaxi Flambado</h4><p>Caramelizado com açúcar mascavo, canela e cachaça. Com sorvete.</p></div><span class="dish-price">R$ 28</span></div>
+        <div class="dish"><div class="dish-l"><h4>Mousse de Coco</h4><p>Aerada, com raspas de limão e granola crocante.</p></div><span class="dish-price">R$ 24</span></div>
+      </div>
+    </div>
+
+    <div class="mcat" id="drinks">
+      <div class="mcat-head"><h2>Drinks & <em>Bebidas</em></h2><span>Tropicais e refrescantes</span></div>
+      <div class="dishes">
+        <div class="dish"><div class="dish-l"><h4>Deck Sunset <span class="badge">assinatura</span></h4><p>Vodka, maracujá, morango e manga em camadas de cor.</p></div><span class="dish-price">R$ 36</span></div>
+        <div class="dish"><div class="dish-l"><h4>Piña Colada da Gigóia</h4><p>Rum branco, creme de coco, abacaxi fresco e caramelo.</p></div><span class="dish-price">R$ 32</span></div>
+        <div class="dish"><div class="dish-l"><h4>Caipirinha Clássica</h4><p>Cachaça premium, limão-taiti, açúcar e gelo.</p></div><span class="dish-price">R$ 28</span></div>
+        <div class="dish"><div class="dish-l"><h4>Água de Coco Sour</h4><p>Gin, coco natural, limão siciliano e hortelã.</p></div><span class="dish-price">R$ 38</span></div>
+        <div class="dish"><div class="dish-l"><h4>Chopp Gelado</h4><p>Artesanal, tirado na hora.</p></div><span class="dish-price">R$ 16</span></div>
+        <div class="dish"><div class="dish-l"><h4>Sucos Tropicais</h4><p>Açaí, caju, graviola, cajá — bem gelados.</p></div><span class="dish-price">R$ 18</span></div>
+      </div>
+      <p class="menu-note">Preços ilustrativos. Cardápio e valores sujeitos a alteração sem aviso prévio.</p>
+    </div>
+
+  </main>
+</div>
+
+<div class="cta-banner">
+  <div class="cta-banner-text"><h2>Gostou do que viu? <em>Reserve sua mesa.</em></h2><p>Garanta um lugar à beira da lagoa.</p></div>
+  <a href="contato.html" class="btn btn-terra">Reservar agora</a>
+</div>
 
 <footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="images/logo.jpg" alt="Deck Bar">
-      <p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p>
-    </div>
-    <div class="footer-links">
-      <h4>Navegação</h4>
-      <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="cardapio.html">Cardápio</a></li>
-        <li><a href="galeria.html">Galeria</a></li>
-        <li><a href="index.html#contato">Reservas</a></li>
-      </ul>
-    </div>
-    <div class="footer-social">
-      <h4>Siga-nos</h4>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="social-icon"><i class="ph ph-instagram-logo"></i></a>
-        <a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="social-icon"><i class="ph ph-facebook-logo"></i></a>
-        <a href="https://wa.me/5521999999999" target="_blank" class="social-icon"><i class="ph ph-whatsapp-logo"></i></a>
-      </div>
-    </div>
+  <div class="foot-grid">
+    <div class="foot-brand"><img src="images/logo.png" alt="Deck Bar"><p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p></div>
+    <div class="foot-col"><h6>Páginas</h6><ul><li><a href="index.html">Início</a></li><li><a href="cardapio.html">Cardápio</a></li><li><a href="galeria.html">Galeria</a></li><li><a href="contato.html">Contato</a></li></ul></div>
+    <div class="foot-col"><h6>Informações</h6><ul><li><a>Ilha da Gigóia — RJ</a></li><li><a href="https://wa.me/5521999999999">(21) 99999-9999</a></li><li><a>Seg–Sex 11h–23h</a></li><li><a>Sáb–Dom 10h–00h</a></li></ul></div>
+    <div class="foot-col"><h6>Redes</h6><div class="socs"><a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="soc">IG</a><a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="soc">FB</a><a href="https://wa.me/5521999999999" target="_blank" class="soc">WA</a></div></div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2025 Deck Bar – Ilha da Gigóia. Todos os direitos reservados.</p>
-  </div>
+  <div class="foot-bot"><p>© 2025 Deck Bar — Ilha da Gigóia.</p><p>Rio de Janeiro, Brasil</p></div>
 </footer>
 
 <script>
-  document.getElementById('navbar').classList.add('scrolled');
-  window.addEventListener('scroll', () => {
-    document.getElementById('navbar').classList.add('scrolled');
-  });
-  function toggleMobile() { document.getElementById('navMobile').classList.toggle('open'); }
-  function closeMobile() { document.getElementById('navMobile').classList.remove('open'); }
-  function scrollTo(id) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    event.target.classList.add('active');
-  }
-  const revealEls = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => observer.observe(el));
+function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
+function jump(id,btn){
+  document.querySelectorAll('.mnav-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  const el=document.getElementById(id);
+  window.scrollTo({top:el.getBoundingClientRect().top+scrollY-76,behavior:'smooth'});
+}
+// Highlight active section on scroll
+const sections=['entradas','frutos','peixes','sobremesas','drinks'];
+const buttons=document.querySelectorAll('.mnav-btn');
+window.addEventListener('scroll',()=>{
+  let cur=0;
+  sections.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<120)cur=i});
+  buttons.forEach(b=>b.classList.remove('on'));
+  buttons[cur].classList.add('on');
+});
 </script>
 </body>
 </html>
