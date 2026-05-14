@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deck Bar – Ilha da Gigóia | Bar & Restaurante à Beira da Lagoa</title>
+  <meta name="description" content="O Deck Bar na Ilha da Gigóia te espera com frutos do mar frescos, coquetéis tropicais, música ao vivo e um pôr do sol inesquecível sobre a lagoa da Barra da Tijuca, Rio de Janeiro.">
+  <link rel="stylesheet" href="style.css">
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1/src/index.js"></script>
+</head>
+<body>
+
+<!-- ===== MOBILE NAV ===== -->
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html" onclick="closeMobile()">Início</a>
+  <a href="cardapio.html" onclick="closeMobile()">Cardápio</a>
+  <a href="galeria.html" onclick="closeMobile()">Galeria</a>
+  <a href="#contato" onclick="closeMobile()">Reservas</a>
+</div>
+
+<!-- ===== NAV ===== -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <img src="images/logo.jpg" alt="Deck Bar Logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Início</a></li>
+    <li><a href="cardapio.html">Cardápio</a></li>
+    <li><a href="galeria.html">Galeria</a></li>
+    <li><a href="#contato" class="nav-cta">Reservar Mesa</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Ilha da Gigóia · Barra da Tijuca · Rio de Janeiro</p>
+    <h1 class="hero-title">
+      Sabores do <em>mar,</em><br>pôr do sol<br>para chamar de seu.
+    </h1>
+    <p class="hero-sub">
+      Frutos do mar frescos, coquetéis tropicais e música ao vivo<br>
+      numa das paisagens mais bonitas do Rio.
+    </p>
+    <div class="hero-actions">
+      <a href="#contato" class="btn-primary">
+        <i class="ph ph-calendar-check"></i> Reservar Mesa
+      </a>
+      <a href="cardapio.html" class="btn-outline">
+        <i class="ph ph-fork-knife"></i> Ver Cardápio
+      </a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== UMBRELLA STRIP ===== -->
+<div class="umbrellas-strip">
+  <div class="umbrellas-inner">
+    <span>☂️</span><span>Camarão no Abacaxi</span>
+    <span>🌅</span><span>Pôr do Sol na Lagoa</span>
+    <span>🎵</span><span>Música ao Vivo</span>
+    <span>🍹</span><span>Coquetéis Tropicais</span>
+    <span>🦐</span><span>Frutos do Mar Frescos</span>
+    <span>☂️</span><span>Comida di Buteco</span>
+    <span>🌊</span><span>Vista para a Lagoa</span>
+    <span>🎶</span><span>Ambiente Descontraído</span>
+    <!-- duplicate for seamless loop -->
+    <span>☂️</span><span>Camarão no Abacaxi</span>
+    <span>🌅</span><span>Pôr do Sol na Lagoa</span>
+    <span>🎵</span><span>Música ao Vivo</span>
+    <span>🍹</span><span>Coquetéis Tropicais</span>
+    <span>🦐</span><span>Frutos do Mar Frescos</span>
+    <span>☂️</span><span>Comida di Buteco</span>
+    <span>🌊</span><span>Vista para a Lagoa</span>
+    <span>🎶</span><span>Ambiente Descontraído</span>
+  </div>
+</div>
+
+<!-- ===== SOBRE ===== -->
+<section id="sobre">
+  <div class="sobre-images reveal">
+    <img src="images/deck9.jpg" alt="Deck Bar ambiente à beira da lagoa" class="sobre-img-main">
+    <img src="images/deck2.jpg" alt="Pratos de frutos do mar" class="sobre-img-accent">
+    <div class="sobre-badge">
+      <strong>+10</strong>
+      <span>Anos de<br>Tradição</span>
+    </div>
+  </div>
+  <div class="sobre-text">
+    <p class="section-label">Sobre Nós</p>
+    <h2 class="section-title">Onde a lagoa<br>encontra <em>o sabor.</em></h2>
+    <p>
+      O Deck Bar é um dos restaurantes mais tradicionais da Ilha da Gigóia. 
+      Localizado à beira da lagoa, oferece uma experiência única: 
+      gastronomia de qualidade, ambiente descontraído e uma vista que 
+      só o Rio de Janeiro sabe entregar.
+    </p>
+    <p>
+      Dos frutos do mar frescos até os coquetéis tropicais coloridos, 
+      cada detalhe foi pensado para que você viva momentos inesquecíveis 
+      — seja num almoço de domingo ou ao som de boa música num fim de tarde.
+    </p>
+    <div class="sobre-features">
+      <div class="feature-item">
+        <span class="feature-icon">🦐</span>
+        <div>
+          <h4>Frutos do Mar</h4>
+          <p>Ingredientes frescos, receitas com alma carioca.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🎵</span>
+        <div>
+          <h4>Música ao Vivo</h4>
+          <p>Shows e sets que animam cada fim de tarde.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🌅</span>
+        <div>
+          <h4>Pôr do Sol</h4>
+          <p>A vista mais bonita da Barra da Tijuca.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <span class="feature-icon">🏆</span>
+        <div>
+          <h4>Comida di Buteco</h4>
+          <p>Participante do famoso festival gastronômico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DESTAQUES ===== -->
+<section id="destaques">
+  <div class="destaques-header reveal">
+    <p class="section-label">Nossos Destaques</p>
+    <h2 class="section-title">O que faz o Deck Bar<br><em>inesquecível</em></h2>
+  </div>
+  <div class="destaques-grid">
+    <div class="destaque-card reveal">
+      <img src="images/deck2.jpg" alt="Camarão no Abacaxi">
+      <div class="destaque-card-body">
+        <span class="tag">⭐ Prato Assinatura</span>
+        <h3>Camarão no Abacaxi</h3>
+        <p>A marca registrada da casa. Apresentação tropical, sabor irresistível — o prato que todo mundo vem provar e ninguém esquece.</p>
+      </div>
+    </div>
+    <div class="destaque-card reveal">
+      <img src="images/deck5.jpg" alt="Coquetéis tropicais">
+      <div class="destaque-card-body">
+        <span class="tag">🍹 Drinks</span>
+        <h3>Coquetéis Tropicais</h3>
+        <p>Cores vibrantes, sabores intensos. Nossos bartenders criam drinks que combinam perfeitamente com o horizonte da lagoa.</p>
+      </div>
+    </div>
+    <div class="destaque-card reveal">
+      <img src="images/deck7.jpg" alt="Pôr do Sol na Lagoa">
+      <div class="destaque-card-body">
+        <span class="tag">🌅 Experiência</span>
+        <h3>Pôr do Sol na Lagoa</h3>
+        <p>Não existe lugar melhor no Rio para ver o sol se pôr. Uma paisagem que vale o passeio até a Ilha da Gigóia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERIA PREVIEW ===== -->
+<section id="galeria">
+  <div class="galeria-header reveal">
+    <p class="section-label">Galeria</p>
+    <h2 class="section-title" style="display:inline-block">Conheça o <em>espaço</em></h2>
+    <a href="galeria.html" class="btn-primary" style="margin-left:2rem;vertical-align:middle;display:inline-flex">
+      Ver tudo <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+  <div class="galeria-grid reveal">
+    <div class="gal-item" onclick="openLightbox(this)">
+      <img src="images/deck4.jpg" alt="Deck com cortinas brancas">
+      <div class="gal-item-overlay"><span>🔍</span></div>
+    </div>
+    <div class="gal-item" onclick="openLightbox(this)">
+      <img src="images/deck1.jpg" alt="Fachada com guarda-chuvas coloridos">
+      <div class="gal-item-overlay"><span>🔍</span></div>
+    </div>
+    <div class="gal-item" onclick="openLightbox(this)">
+      <img src="images/deck6.jpg" alt="Drink com abacaxi">
+      <div class="gal-item-overlay"><span>🔍</span></div>
+    </div>
+    <div class="gal-item" onclick="openLightbox(this)">
+      <img src="images/deck8.jpg" alt="Vista do bar pelo rio">
+      <div class="gal-item-overlay"><span>🔍</span></div>
+    </div>
+    <div class="gal-item" onclick="openLightbox(this)">
+      <img src="images/deck3.jpg" alt="Petisco bolinha frita">
+      <div class="gal-item-overlay"><span>🔍</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIÊNCIA ===== -->
+<section id="experiencia">
+  <div class="exp-image" style="background-image: url('images/deck4.jpg')"></div>
+  <div class="exp-content">
+    <p class="section-label">A Experiência</p>
+    <h2 class="section-title">Uma ilha,<br><em>mil momentos.</em></h2>
+    <p>
+      Chegue de barco ou pela ponte — o Deck Bar já te recebe com o 
+      cheiro do mar e a brisa da lagoa. Nossos decks à beira d'água, 
+      cortinas brancas esvoaçando e o som de boa música formam o 
+      cenário perfeito para qualquer ocasião: romantismo, família, 
+      amigos ou aquele evento especial.
+    </p>
+    <div class="exp-stats">
+      <div class="stat">
+        <strong>4.5★</strong>
+        <span>TripAdvisor</span>
+      </div>
+      <div class="stat">
+        <strong>+5k</strong>
+        <span>Seguidores</span>
+      </div>
+      <div class="stat">
+        <strong>7 dias</strong>
+        <span>Aberto toda semana</span>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem">
+      <a href="#contato" class="btn-primary">
+        <i class="ph ph-calendar-check"></i> Quero Reservar
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU PREVIEW ===== -->
+<section id="cardapio">
+  <div class="cardapio-header">
+    <div>
+      <p class="section-label">Cardápio</p>
+      <h2 class="section-title">Uma amostra do que<br><em>te espera</em></h2>
+    </div>
+    <a href="cardapio.html" class="btn-primary">
+      Cardápio Completo <i class="ph ph-arrow-right"></i>
+    </a>
+  </div>
+  <div class="menu-tabs">
+    <button class="menu-tab active" onclick="switchTab(this,'frutos')">Frutos do Mar</button>
+    <button class="menu-tab" onclick="switchTab(this,'petiscos')">Petiscos</button>
+    <button class="menu-tab" onclick="switchTab(this,'drinks')">Drinks</button>
+  </div>
+  <div class="menu-items" id="menu-frutos">
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Camarão no Abacaxi 🍍</h4>
+        <p>Camarão salteado com creme de coco, servido no abacaxi</p>
+      </div>
+      <span class="menu-item-price">R$ 98</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Moqueca de Peixe</h4>
+        <p>Filé de peixe fresco ao molho de leite de coco e dendê</p>
+      </div>
+      <span class="menu-item-price">R$ 85</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Polvo à Lagareiro</h4>
+        <p>Polvo grelhado com azeite, batatas e chimichurri</p>
+      </div>
+      <span class="menu-item-price">R$ 110</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Caldeirada de Frutos do Mar</h4>
+        <p>Camarão, lula, polvo e peixe no caldo especial da casa</p>
+      </div>
+      <span class="menu-item-price">R$ 120</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Arroz de Lula</h4>
+        <p>Lula fresca com arroz cremoso e ervas frescas</p>
+      </div>
+      <span class="menu-item-price">R$ 72</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Salmão Grelhado</h4>
+        <p>Com purê de batata-doce e farofa de ervas</p>
+      </div>
+      <span class="menu-item-price">R$ 89</span>
+    </div>
+  </div>
+  <div class="menu-items" id="menu-petiscos" style="display:none">
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Bolinho de Bacalhau</h4>
+        <p>Tradicional, crocante por fora e cremoso por dentro</p>
+      </div>
+      <span class="menu-item-price">R$ 38</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Casquinha de Siri</h4>
+        <p>Gratinada com catupiry e farofa crocante</p>
+      </div>
+      <span class="menu-item-price">R$ 42</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Bolinho de Camarão</h4>
+        <p>Recheado com camarão temperado e servido com aioli</p>
+      </div>
+      <span class="menu-item-price">R$ 45</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Isca de Peixe Frito</h4>
+        <p>Servido com vinagrete da casa e limão tahiti</p>
+      </div>
+      <span class="menu-item-price">R$ 36</span>
+    </div>
+  </div>
+  <div class="menu-items" id="menu-drinks" style="display:none">
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Deck Sunset 🌅</h4>
+        <p>Vodka, maracujá, morango e manga — nosso drink assinatura</p>
+      </div>
+      <span class="menu-item-price">R$ 36</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Piña Colada da Gigóia 🍍</h4>
+        <p>Rum, creme de coco, abacaxi e caramelo</p>
+      </div>
+      <span class="menu-item-price">R$ 32</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Caipirinha Clássica</h4>
+        <p>Cachaça premium, limão e açúcar — do jeito certo</p>
+      </div>
+      <span class="menu-item-price">R$ 28</span>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Água de Coco Sour</h4>
+        <p>Gin, água de coco, limão siciliano e hortelã</p>
+      </div>
+      <span class="menu-item-price">R$ 38</span>
+    </div>
+  </div>
+  <p style="margin-top:1.5rem;font-style:italic;color:var(--wood-mid);font-size:0.9rem">
+    * Preços meramente ilustrativos. Consulte o cardápio atualizado.
+  </p>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato">
+  <div class="contato-inner">
+    <div class="contato-info reveal">
+      <p class="section-label">Contato & Reservas</p>
+      <h2 class="section-title">Venha nos<br><em>visitar</em></h2>
+      <p>Reserve sua mesa e garanta um lugar à beira da lagoa. Também realizamos eventos privados, aniversários e celebrações especiais.</p>
+      <div class="contato-details">
+        <div class="contato-item">
+          <div class="contato-item-icon">📍</div>
+          <div class="contato-item-text">
+            <h5>Localização</h5>
+            <p>Ilha da Gigóia, Barra da Tijuca<br>Rio de Janeiro – RJ</p>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="contato-item-icon">📞</div>
+          <div class="contato-item-text">
+            <h5>Telefone / WhatsApp</h5>
+            <a href="https://wa.me/5521999999999" target="_blank">(21) 99999-9999</a>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="contato-item-icon">🕐</div>
+          <div class="contato-item-text">
+            <h5>Horário de Funcionamento</h5>
+            <p>Seg – Sex: 11h às 23h<br>Sáb – Dom: 10h às 00h</p>
+          </div>
+        </div>
+        <div class="contato-item">
+          <div class="contato-item-icon">📸</div>
+          <div class="contato-item-text">
+            <h5>Redes Sociais</h5>
+            <a href="https://www.instagram.com/deckdailhadagigoia" target="_blank">@deckdailhadagigoia</a><br>
+            <a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank">facebook.com/deckbarilhadagigoia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contato-form reveal">
+      <h3>Reserve sua Mesa</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nome</label>
+          <input type="text" placeholder="Seu nome completo">
+        </div>
+        <div class="form-group">
+          <label>Telefone / WhatsApp</label>
+          <input type="tel" placeholder="(21) 9 0000-0000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Data</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Número de Pessoas</label>
+          <select>
+            <option>1–2 pessoas</option>
+            <option>3–4 pessoas</option>
+            <option>5–8 pessoas</option>
+            <option>Grupo / Evento</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Mensagem (opcional)</label>
+        <textarea placeholder="Alguma ocasião especial? Nos conte…"></textarea>
+      </div>
+      <a href="#" class="btn-primary" style="width:100%;justify-content:center;display:flex;gap:0.5rem">
+        <i class="ph ph-paper-plane-tilt"></i> Enviar Pedido de Reserva
+      </a>
+      <p style="color:rgba(253,246,236,0.4);font-size:0.8rem;margin-top:1rem;text-align:center">
+        Ou entre em contato pelo WhatsApp para confirmação imediata.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.jpg" alt="Deck Bar">
+      <p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cardapio.html">Cardápio</a></li>
+        <li><a href="galeria.html">Galeria</a></li>
+        <li><a href="#contato">Reservas</a></li>
+        <li><a href="#sobre">Sobre Nós</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Siga-nos</h4>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="social-icon" title="Instagram">
+          <i class="ph ph-instagram-logo"></i>
+        </a>
+        <a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="social-icon" title="Facebook">
+          <i class="ph ph-facebook-logo"></i>
+        </a>
+        <a href="https://wa.me/5521999999999" target="_blank" class="social-icon" title="WhatsApp">
+          <i class="ph ph-whatsapp-logo"></i>
+        </a>
+        <a href="https://www.tripadvisor.com.br/Restaurant_Review-g303506-d15508596-Reviews-Deck_Bar-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html" target="_blank" class="social-icon" title="TripAdvisor">
+          <i class="ph ph-star"></i>
+        </a>
+      </div>
+      <p style="color:rgba(255,255,255,0.4);font-size:0.82rem;margin-top:1.5rem;line-height:1.6">
+        Ilha da Gigóia, Barra da Tijuca<br>Rio de Janeiro – RJ
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Deck Bar – Ilha da Gigóia. Todos os direitos reservados.</p>
+    <p>Desenvolvido com ❤️ para o Rio de Janeiro</p>
+  </div>
+</footer>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Parallax hero (subtle)
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (heroBg) heroBg.style.transform = `scale(1.07) translateY(${y * 0.15}px)`;
+  });
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = `${(i % 4) * 0.1}s`;
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Mobile nav
+  function toggleMobile() {
+    document.getElementById('navMobile').classList.toggle('open');
+  }
+  function closeMobile() {
+    document.getElementById('navMobile').classList.remove('open');
+  }
+
+  // Menu tabs
+  function switchTab(btn, id) {
+    document.querySelectorAll('.menu-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ['frutos','petiscos','drinks'].forEach(t => {
+      const el = document.getElementById('menu-'+t);
+      if (el) el.style.display = t === id ? 'grid' : 'none';
+    });
+  }
+
+  // Lightbox
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if (e.key==='Escape') closeLightbox(); });
+</script>
+</body>
+</html>
