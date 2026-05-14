@@ -5,23 +5,15 @@
 <title>Contato & Reservas — Deck Bar</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.map-placeholder{
-  width:100%;height:280px;background:var(--sand);
-  display:flex;align-items:center;justify-content:center;
-  border-top:1px solid var(--rule);
-  font-size:13px;color:var(--gray);font-style:italic;
-  gap:8px;
-}
 .how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule)}
-.how-card{background:#fff;padding:28px 24px}
-.how-card span{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;color:var(--green);display:block;margin-bottom:8px}
-.how-card h4{font-size:13px;font-weight:500;color:#111;margin-bottom:6px}
-.how-card p{font-size:12px;color:var(--gray);line-height:1.6}
+.how-card{background:var(--warm);padding:24px 22px}
+.how-card span{font-size:1.8rem;display:block;margin-bottom:6px}
+.how-card h4{font-size:13px;font-weight:600;color:#111;margin-bottom:4px}
+.how-card p{font-size:12.5px;color:var(--gray);line-height:1.65}
 @media(max-width:768px){.how-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-
 <div class="drawer" id="drawer">
   <button class="drawer-x" onclick="closeDrawer()">✕</button>
   <a href="index.html" onclick="closeDrawer()">Início</a>
@@ -29,7 +21,6 @@
   <a href="galeria.html" onclick="closeDrawer()">Galeria</a>
   <a href="contato.html" onclick="closeDrawer()">Contato</a>
 </div>
-
 <header>
   <a href="index.html" class="logo"><img src="images/logo.png" alt="Deck Bar"></a>
   <nav>
@@ -43,47 +34,33 @@
 </header>
 
 <div class="page-hero">
-  <div class="page-hero-bg" style="background-image:url('images/frente_restaurante.png')"></div>
+  <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1400&q=80&auto=format&fit=crop')"></div>
   <div class="page-hero-body">
     <span class="label">Venha nos visitar</span>
     <h1>Contato & <em>Reservas</em></h1>
   </div>
 </div>
 
-<!-- COMO CHEGAR -->
-<section class="s-compact bg-sand">
+<section style="padding:32px 36px;background:var(--warm2);border-bottom:1px solid var(--rule)">
   <span class="label" style="margin-bottom:16px">Como chegar</span>
   <div class="how-grid">
-    <div class="how-card">
-      <span>⛵</span>
-      <h4>De Barco</h4>
-      <p>Travessia a partir da Marina da Glória ou da Barra da Tijuca. Uma experiência à parte antes mesmo de chegar.</p>
-    </div>
-    <div class="how-card">
-      <span>🚗</span>
-      <h4>De Carro</h4>
-      <p>Acesso pela Av. das Américas, Barra da Tijuca. Estacionamento disponível nas proximidades da ilha.</p>
-    </div>
-    <div class="how-card">
-      <span>📍</span>
-      <h4>Localização</h4>
-      <p>Ilha da Gigóia, Barra da Tijuca, Rio de Janeiro — RJ. Uma das ilhas mais charmosas do Rio.</p>
-    </div>
+    <div class="how-card"><span>⛵</span><h4>De Barco</h4><p>Travessia a partir da Marina da Glória ou da Barra da Tijuca. Uma experiência à parte antes de chegar.</p></div>
+    <div class="how-card"><span>🚗</span><h4>De Carro</h4><p>Acesso pela Av. das Américas, Barra da Tijuca. Estacionamento disponível nas proximidades da ilha.</p></div>
+    <div class="how-card"><span>📍</span><h4>Localização</h4><p>Ilha da Gigóia, Barra da Tijuca, Rio de Janeiro — RJ. Uma das ilhas mais charmosas do Rio.</p></div>
   </div>
 </section>
 
-<!-- CONTACT + FORM -->
 <div class="contact-grid" id="contato">
   <div class="c-info">
     <span class="label">Fale Conosco</span>
-    <h2 class="heading" style="color:#fff;margin-top:10px">Reservas & <em style="color:rgba(255,255,255,.4)">Informações</em></h2>
-    <p>Reserve sua mesa e garanta um lugar à beira da lagoa. Também realizamos eventos privados, aniversários e celebrações especiais.</p>
+    <h2 class="heading" style="color:#fff;margin-top:8px">Reservas & <em>Informações</em></h2>
+    <p>Reserve sua mesa e garanta um lugar à beira da lagoa. Realizamos também eventos privados, aniversários e celebrações especiais.</p>
     <div class="c-list">
       <div class="c-item"><h6>Localização</h6><p>Ilha da Gigóia, Barra da Tijuca<br>Rio de Janeiro — RJ</p></div>
       <div class="c-item"><h6>WhatsApp</h6><a href="https://wa.me/5521999999999" target="_blank">(21) 99999-9999</a></div>
       <div class="c-item"><h6>Instagram</h6><a href="https://www.instagram.com/deckdailhadagigoia" target="_blank">@deckdailhadagigoia</a></div>
       <div class="c-item"><h6>Facebook</h6><a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank">facebook.com/deckbarilhadagigoia</a></div>
-      <div class="c-item"><h6>Horário de Funcionamento</h6><p>Segunda a Sexta &nbsp;·&nbsp; 11h às 23h<br>Sábado e Domingo &nbsp;·&nbsp; 10h às 00h</p></div>
+      <div class="c-item"><h6>Horário</h6><p>Segunda a Sexta · 11h às 23h<br>Sábado e Domingo · 10h às 00h</p></div>
     </div>
   </div>
   <div class="c-form">
@@ -95,40 +72,24 @@
     <div class="f2">
       <div class="field"><label>Data preferida</label><input type="date"></div>
       <div class="field"><label>Número de pessoas</label>
-        <select>
-          <option value="">Selecione</option>
-          <option>1–2 pessoas</option>
-          <option>3–4 pessoas</option>
-          <option>5–8 pessoas</option>
-          <option>Grupo (9 ou mais)</option>
-          <option>Evento privado</option>
-        </select>
+        <select><option value="">Selecione</option><option>1–2 pessoas</option><option>3–4 pessoas</option><option>5–8 pessoas</option><option>Grupo (9+)</option><option>Evento privado</option></select>
       </div>
     </div>
-    <div class="field"><label>Ocasião ou mensagem (opcional)</label><textarea placeholder="Aniversário, almoço de negócios, pedido especial..."></textarea></div>
+    <div class="field"><label>Mensagem (opcional)</label><textarea placeholder="Aniversário, almoço de negócios, pedido especial..."></textarea></div>
     <button class="f-submit">Enviar pedido de reserva</button>
     <p class="f-hint">Confirmação em até 24h. Ou fale agora pelo WhatsApp.</p>
   </div>
-</div>
-
-<!-- MAP PLACEHOLDER -->
-<div class="map-placeholder">
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="opacity:.4"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5zm0 6.5A1.5 1.5 0 1 1 8 4a1.5 1.5 0 0 1 0 3.5z" fill="#6B6660"/></svg>
-  Ilha da Gigóia, Barra da Tijuca — Rio de Janeiro
 </div>
 
 <footer>
   <div class="foot-grid">
     <div class="foot-brand"><img src="images/logo.png" alt="Deck Bar"><p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p></div>
     <div class="foot-col"><h6>Páginas</h6><ul><li><a href="index.html">Início</a></li><li><a href="cardapio.html">Cardápio</a></li><li><a href="galeria.html">Galeria</a></li><li><a href="contato.html">Contato</a></li></ul></div>
-    <div class="foot-col"><h6>Informações</h6><ul><li><a>Ilha da Gigóia — RJ</a></li><li><a href="https://wa.me/5521999999999">(21) 99999-9999</a></li><li><a>Seg–Sex 11h–23h</a></li><li><a>Sáb–Dom 10h–00h</a></li></ul></div>
+    <div class="foot-col"><h6>Informações</h6><ul><li><a>Ilha da Gigóia — RJ</a></li><li><a href="https://wa.me/5521999999999">(21) 99999-9999</a></li><li><a>Seg–Sex: 11h–23h</a></li><li><a>Sáb–Dom: 10h–00h</a></li></ul></div>
     <div class="foot-col"><h6>Redes</h6><div class="socs"><a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="soc">IG</a><a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="soc">FB</a><a href="https://wa.me/5521999999999" target="_blank" class="soc">WA</a><a href="https://www.tripadvisor.com.br/Restaurant_Review-g303506-d15508596-Reviews-Deck_Bar-Rio_de_Janeiro_State_of_Rio_de_Janeiro.html" target="_blank" class="soc">TA</a></div></div>
   </div>
   <div class="foot-bot"><p>© 2025 Deck Bar — Ilha da Gigóia.</p><p>Rio de Janeiro, Brasil</p></div>
 </footer>
-
-<script>
-function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
-</script>
+<script>function closeDrawer(){document.getElementById('drawer').classList.remove('open')}</script>
 </body>
 </html>

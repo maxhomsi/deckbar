@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
 <div class="drawer" id="drawer">
   <button class="drawer-x" onclick="closeDrawer()">✕</button>
   <a href="index.html" onclick="closeDrawer()">Início</a>
@@ -14,7 +13,6 @@
   <a href="galeria.html" onclick="closeDrawer()">Galeria</a>
   <a href="contato.html" onclick="closeDrawer()">Contato</a>
 </div>
-
 <header>
   <a href="index.html" class="logo"><img src="images/logo.png" alt="Deck Bar"></a>
   <nav>
@@ -36,7 +34,6 @@
 </div>
 
 <div class="menu-layout">
-  <!-- SIDEBAR -->
   <aside class="menu-sidebar">
     <p>Categorias</p>
     <div class="menu-nav">
@@ -47,10 +44,7 @@
       <button class="mnav-btn" onclick="jump('drinks',this)">Drinks <span class="mnav-dot"></span></button>
     </div>
   </aside>
-
-  <!-- CONTENT -->
   <main class="menu-content">
-
     <div class="mcat" id="entradas">
       <div class="mcat-head"><h2>Entradas & <em>Petiscos</em></h2><span>Para começar</span></div>
       <div class="dishes">
@@ -61,7 +55,6 @@
         <div class="dish"><div class="dish-l"><h4>Tábua do Deck</h4><p>Seleção de petiscos da casa para compartilhar.</p></div><span class="dish-price">R$ 85</span></div>
       </div>
     </div>
-
     <div class="mcat" id="frutos">
       <div class="mcat-head"><h2>Frutos do <em>Mar</em></h2><span>Sempre frescos</span></div>
       <div class="dishes">
@@ -73,7 +66,6 @@
         <div class="dish"><div class="dish-l"><h4>Arroz de Lula</h4><p>Lula fresca, arroz cremoso, ervas e azeite extra virgem.</p></div><span class="dish-price">R$ 72</span></div>
       </div>
     </div>
-
     <div class="mcat" id="peixes">
       <div class="mcat-head"><h2>Pratos de <em>Peixe</em></h2><span>Do litoral ao prato</span></div>
       <div class="dishes">
@@ -82,7 +74,6 @@
         <div class="dish"><div class="dish-l"><h4>Peixe na Brasa</h4><p>Inteiro, na brasa, com ervas e limão. Consulte o peixe do dia.</p></div><span class="dish-price">Consulte</span></div>
       </div>
     </div>
-
     <div class="mcat" id="sobremesas">
       <div class="mcat-head"><h2><em>Sobremesas</em></h2><span>O final perfeito</span></div>
       <div class="dishes">
@@ -91,7 +82,6 @@
         <div class="dish"><div class="dish-l"><h4>Mousse de Coco</h4><p>Aerada, com raspas de limão e granola crocante.</p></div><span class="dish-price">R$ 24</span></div>
       </div>
     </div>
-
     <div class="mcat" id="drinks">
       <div class="mcat-head"><h2>Drinks & <em>Bebidas</em></h2><span>Tropicais e refrescantes</span></div>
       <div class="dishes">
@@ -104,12 +94,11 @@
       </div>
       <p class="menu-note">Preços ilustrativos. Cardápio e valores sujeitos a alteração sem aviso prévio.</p>
     </div>
-
   </main>
 </div>
 
 <div class="cta-banner">
-  <div class="cta-banner-text"><h2>Gostou do que viu? <em>Reserve sua mesa.</em></h2><p>Garanta um lugar à beira da lagoa.</p></div>
+  <div><h2>Gostou do que viu? <em>Reserve sua mesa.</em></h2><p>Garanta um lugar à beira da lagoa.</p></div>
   <a href="contato.html" class="btn btn-terra">Reservar agora</a>
 </div>
 
@@ -117,28 +106,26 @@
   <div class="foot-grid">
     <div class="foot-brand"><img src="images/logo.png" alt="Deck Bar"><p>"Um pedacinho do paraíso carioca, à beira da lagoa da Gigóia."</p></div>
     <div class="foot-col"><h6>Páginas</h6><ul><li><a href="index.html">Início</a></li><li><a href="cardapio.html">Cardápio</a></li><li><a href="galeria.html">Galeria</a></li><li><a href="contato.html">Contato</a></li></ul></div>
-    <div class="foot-col"><h6>Informações</h6><ul><li><a>Ilha da Gigóia — RJ</a></li><li><a href="https://wa.me/5521999999999">(21) 99999-9999</a></li><li><a>Seg–Sex 11h–23h</a></li><li><a>Sáb–Dom 10h–00h</a></li></ul></div>
+    <div class="foot-col"><h6>Informações</h6><ul><li><a>Ilha da Gigóia — RJ</a></li><li><a href="https://wa.me/5521999999999">(21) 99999-9999</a></li><li><a>Seg–Sex: 11h–23h</a></li><li><a>Sáb–Dom: 10h–00h</a></li></ul></div>
     <div class="foot-col"><h6>Redes</h6><div class="socs"><a href="https://www.instagram.com/deckdailhadagigoia" target="_blank" class="soc">IG</a><a href="https://www.facebook.com/deckbarilhadagigoia/" target="_blank" class="soc">FB</a><a href="https://wa.me/5521999999999" target="_blank" class="soc">WA</a></div></div>
   </div>
   <div class="foot-bot"><p>© 2025 Deck Bar — Ilha da Gigóia.</p><p>Rio de Janeiro, Brasil</p></div>
 </footer>
-
 <script>
 function closeDrawer(){document.getElementById('drawer').classList.remove('open')}
 function jump(id,btn){
   document.querySelectorAll('.mnav-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   const el=document.getElementById(id);
-  window.scrollTo({top:el.getBoundingClientRect().top+scrollY-76,behavior:'smooth'});
+  window.scrollTo({top:el.getBoundingClientRect().top+scrollY-70,behavior:'smooth'});
 }
-// Highlight active section on scroll
-const sections=['entradas','frutos','peixes','sobremesas','drinks'];
-const buttons=document.querySelectorAll('.mnav-btn');
 window.addEventListener('scroll',()=>{
+  const ids=['entradas','frutos','peixes','sobremesas','drinks'];
+  const btns=document.querySelectorAll('.mnav-btn');
   let cur=0;
-  sections.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<120)cur=i});
-  buttons.forEach(b=>b.classList.remove('on'));
-  buttons[cur].classList.add('on');
+  ids.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<130)cur=i});
+  btns.forEach(b=>b.classList.remove('on'));
+  btns[cur].classList.add('on');
 });
 </script>
 </body>
